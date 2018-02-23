@@ -1,0 +1,222 @@
+@import "settings";
+
+/*body {
+    background-color: $color-bg;
+}*/
+
+
+/*
+* GLOBAL SETTINGS
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+
+/*
+* MAIN PAGE LAYOUT
+*/
+
+.wrapper,
+nav,
+.wrapper.nav li,
+.theme-panel,
+.mobileMenuIcon {
+    display: flex;
+}
+
+.wrapper.page {
+    height: 100vh;
+}
+
+nav {
+    flex-wrap: wrap;
+    height: 50px;
+    position: relative;
+}
+
+.wrapper.page,
+.wrapper.nav {
+    flex-direction: column;
+}
+
+nav,
+.wrapper.panels {
+    flex-wrap: wrap;
+}
+
+.theme-panel,
+.mobileMenuIcon {
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+* NAVIGATION
+*/
+
+.navLogo img {
+    width: auto;
+    height: 50px;
+}
+
+.mobileMenuIconContainer {
+    flex: 1;
+}
+
+.mobileMenuIcon {
+    float: right;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 5px;
+    font-size: 1.2rem;
+}
+
+.wrapper.nav {
+    list-style-type: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+
+.wrapper.nav a {
+    display: block;
+}
+
+.navPane-item {
+    list-style-type: none;
+    text-align: center;
+    overflow: hidden;
+    height: 0px;
+    /* animate menu roll-up */
+    -webkit-transition: height 200ms ease-in;
+    -moz-transition: height 200ms ease-in;
+    -o-transition: height 200ms ease-in;
+    transition: height 200ms ease-in;
+}
+
+.wrapper.nav.open .navPane-item {
+    height: 40px;
+}
+
+.wrapper.nav .sport {
+    background-color: $color-nav-sport;
+}
+
+.wrapper.nav .club {
+    background-color: $color-nav-club;
+}
+
+.wrapper.nav .news {
+    background-color: $color-nav-news;
+}
+
+.wrapper.nav .gallery {
+    background-color: $color-nav-gallery;
+}
+
+.wrapper.nav .contact {
+    background-color: $color-nav-contact;
+}
+
+.wrapper.nav .shop {
+    background-color: $color-nav-shop;
+}
+
+.wrapper.nav .reform {
+    background-color: $color-nav-reform;
+}
+
+.wrapper.nav span {
+    color: white;
+}
+
+.theme-panel h2,
+.mobileMenuIcon span {
+    display: block;
+}
+
+
+/*
+* THEME PANELS
+*/
+
+.wrapper.panels {
+    height: calc(100vh - 50px);
+}
+
+.theme-panel:not(.min36) {
+    flex: 50%;
+}
+
+.theme-panel.min36 {
+    width: 50vw;
+}
+
+.theme-panel,
+footer {
+    height: calc((100vh - 50px)/3);
+}
+
+.theme-panel {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+}
+
+.theme-panel.squash {
+    background-image: url(../img/panels/kolor_sqh_1_image_normal.jpg);
+}
+
+.theme-panel.badminton {
+    background-image: url(../img/panels/kolor_bdm_1_image_normal.jpg);
+}
+
+.theme-panel.personalTraining {
+    background-image: url(../img/panels/kolor_fit_1_image_normal.jpg);
+}
+
+.theme-panel.pingPong {
+    background-image: url(../img/panels/kolor_ts_1_image_normal.jpg);
+}
+
+.theme-panel.min36 {
+    background-image: url(../img/panels/36minut_POD_0045_1_image_normal.jpg);
+}
+
+.theme-panel h2 {
+    text-align: center;
+    margin: 0;
+}
+
+
+/*
+* FOOTER
+*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50vw;
+}
