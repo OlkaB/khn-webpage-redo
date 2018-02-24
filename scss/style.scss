@@ -1,9 +1,11 @@
+/* 
+*   USED BREAKPOINTS:
+*   - lg: >= 900px (as Desktop)
+*   - sm: >= 260px && < 900px (as Mobile)
+*   - xs: < 290px (as TinyMobile)
+*/
+
 @import "settings";
-
-/*body {
-    background-color: $color-bg;
-}*/
-
 
 /*
 * GLOBAL SETTINGS
@@ -13,8 +15,12 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    width: 100%;
+    height: 100%
+}
+
+body {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -41,13 +47,14 @@ footer {
 }
 
 .wrapper.page {
-    height: 100vh;
     width: 100vw;
+    position: relative;
 }
 
 nav {
     height: 50px;
     position: relative;
+    background-color: white;
 }
 
 .wrapper.page,
@@ -119,10 +126,7 @@ header {
     text-align: center;
     overflow: hidden;
     height: 0px;
-    /* animate menu roll-up */
-    -webkit-transition: height 200ms ease-in;
-    -moz-transition: height 200ms ease-in;
-    -o-transition: height 200ms ease-in;
+    /* animate menu collapse/expand */
     transition: height 200ms ease-in;
 }
 
@@ -162,12 +166,21 @@ header {
     color: white;
 }
 
+.navPane-item {
+    filter: brightness(100%);
+    transition: filter 0.5s ease-in-out;
+}
+
 .navPane-item li {
     height: 40px;
 }
 
 .navPane-item li img {
     margin-right: 20px;
+}
+
+.navPane-item:hover {
+    filter: brightness(80%);
 }
 
 .theme-panel h2,
@@ -184,21 +197,18 @@ main {
     position: relative;
 }
 
-.wrapper.panels {
-    height: calc(100vh - 50px);
-}
-
 .theme-panel:not(.min36) {
     flex: 50%;
 }
 
 .theme-panel.min36 {
-    width: 50vw;
+    flex-basis: 50%;
 }
 
 .theme-panel,
 footer {
     height: calc((100vh - 50px)/3);
+    min-height: 161px;
 }
 
 .theme-panel {
@@ -238,16 +248,127 @@ footer {
     padding: 10px 5px;
 }
 
+main.collapsed .wrapper.panels {
+    display: none;
+}
+
 
 /*
-* TRENING PERSONALNY -> move to outer file
+*  UNDER CONSTRUCTION
 */
 
-.page.personalTraining {
+.underConstruction img {
+    width: 80%;
+    margin: auto;
+    display: block;
+}
+
+.underConstruction {
+    text-align: center;
+}
+
+
+/*
+* TRENING PERSONALNY
+*/
+
+.subpage.hidden {
     display: none;
+}
+
+.subpage {
+    z-index: 0;
+    position: relative;
+    padding: 10px;
+    color: rgb(85, 85, 85);
+}
+
+.closeSubpage {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    border: 1px solid darkgrey;
+    color: darkgrey;
+    padding: 5px;
+    float: right;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.subpage.personalTraining {
+    padding: 20px 10px 90px;
+}
+
+
+/* flipping circle effect */
+
+.trainers p {
+    text-align: center;
+}
+
+.flipCircleWrapper {
+    cursor: pointer;
+    height: 220px;
+    position: relative;
+    width: 220px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.circle {
+    height: 100%;
     position: absolute;
-    left: 0;
-    z-index: -1;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+    width: 100%;
+}
+
+.circle:hover {
+    transform: rotateY(180deg);
+}
+
+.circle .side,
+.circle .overlay {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.circle .side {
+    background: url(../img/sport-fitness/instruktorzy1_1_img_normal.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    position: absolute;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.circle .back {
+    line-height: 150px;
+    text-align: center;
+    transform: rotateY(180deg);
+    color: white;
+}
+
+.circle .back p {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.circle .back p::before {
+    content: '';
+    border-top: 1px solid white;
+    width: 70%;
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+}
+
+.circle .back .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -260,61 +381,131 @@ footer {
     bottom: 0;
     right: 0;
     width: 50vw;
-    background-color: white;
     font-size: 0.8rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
 
 footer,
-a.link,
-.phone {
+.contactData,
+.redirect {
     color: #929090;
-}
-
-footer>* {
-    display: block;
-    flex: 100%;
+    display: flex;
 }
 
 footer,
 .contactData {
-    text-align: center;
-}
-
-.contactData>* {
-    display: block;
-    padding: 5px;
-}
-
-.phone {
-    cursor: pointer;
+    flex-direction: column;
 }
 
 .buildedBy {
-    color: lightgrey;
+    color: lightgray;
+}
+
+.contactData {
+    justify-content: space-around;
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.contactData span {
+    align-self: center;
+}
+
+.redirect {
+    text-align: center;
+    justify-content: center;
+}
+
+.redirect .icon {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.redirect.fb .icon {
+    background-image: url(../img/footer/facebook.png);
+    background-size: contain;
+}
+
+.redirect.mobile .icon {
+    background-image: url(../img/footer/mobile_icon2.png);
+    background-size: contain;
+}
+
+.redirect.mail .icon {
+    background-image: url(../img/footer/envelope_16.png);
+    background-size: auto;
+}
+
+.helperTxt .buildedBy {
     font-size: 0.7rem;
+}
+
+.helperTxt {
+    display: none;
+}
+
+.buildedBy {
+    display: block;
+    height: 25px;
+    text-align: center;
+}
+
+
+/* when subpage is opened on small screens position footer on bottom */
+
+footer.bottomPosition {
+    position: static;
+    width: 100vw;
+    height: auto;
+    display: block;
+    min-height: initial;
+    border-top: 1px solid lightgrey;
 }
 
 
 /* ----------------------------------------- 
- -------------- DESKTOP SIZE --------------- 
- ----------------------------------------- */
+-------------- DESKTOP SIZE --------------- 
+----------------------------------------- */
 
 @media screen and (min-width: 900px) {
-    /*
-    * SPORT PAGE LAYOUT
-    */
-    .wrapper.page {
-        flex-direction: row;
+    .wrapper.page,
+    .theme-panel {
+        height: 100vh;
+        width: 100%
+    }
+    header,
+    .navLogo img,
+    .wrapper.nav,
+    footer {
+        width: 150px;
+    }
+    main {
+        margin-left: 150px;
+        min-height: 100vh;
+        display: flex;
     }
     .wrapper.panels {
         flex-wrap: nowrap;
     }
     /*
-    * NAVIGATION
-    */
+* NAVIGATION
+*/
+    header,
+    footer {
+        position: fixed;
+    }
+    header,
     nav {
-        height: 100vh;
-        display: block;
+        height: calc(100vh - 130px);
     }
     .navLogo img {
         height: auto;
@@ -323,40 +514,149 @@ footer,
         display: none;
     }
     .wrapper.nav {
+        flex: 1;
         display: flex;
         position: initial;
         /* viewport height minus footer and logo heights */
-        height: calc(100vh - 236px);
+        height: calc(100vh - 127px - 76px);
     }
     .navPane-item {
         overflow: initial;
         flex: 1;
     }
+    .navPane-item li {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .navPane-item li>* {
+        display: block;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+    }
     .navPane-item li img {
         margin-right: 0;
-    }
-    header,
-    .navLogo img,
-    .wrapper.nav,
-    footer {
-        width: 150px;
+        margin-bottom: 10px;
     }
     /*
-    * THEME PANELS
+    * SPORT PAGE LAYOUT
     */
+    .subpage.personalTraining {
+        padding: 0 20px 70px 40px;
+    }
+    main.collapsed .subpage {
+        width: calc(100vw - 140px - 150px);
+        margin-left: 140px;
+        flex: 1;
+    }
+    /*
+* THEME PANELS
+*/
+    .wrapper.panels {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+    }
+    main.collapsed .wrapper.panels {
+        display: flex;
+        width: 140px;
+        position: fixed;
+        z-index: 40;
+    }
+    .theme-panel.collapsed {
+        flex: 0;
+        overflow: hidden;
+    }
+    main.collapsed .theme-panel:not(.collapsed) {
+        flex-basis: 100%;
+    }
     .theme-panel {
-        height: 100vh;
+        background-size: auto 100%;
+        flex-basis: 100%;
+        filter: grayscale(70%);
+        overflow: initial;
+        transition: flex 0.5s ease-in-out;
+        transition-property: flex, filter, background-size;
+    }
+    .theme-panel:hover {
+        /* flex-basis: 120%;*/
+        background-size: auto 120%;
+        filter: grayscale(0%);
     }
     /*
-    * FOOTER
-    */
+* TRENING PERSONALNY
+*/
+    .subpage.personalTraining .textContent {
+        display: flex;
+        text-align: justify;
+    }
+    .subpage.personalTraining div[class^=col] {
+        flex: 1;
+    }
+    .subpage.personalTraining .textContent .col1 {
+        padding-right: 30px;
+    }
+    .subpage.personalTraining .textContent .col2 {
+        padding-left: 30px;
+    }
+    /*
+* FOOTER
+*/
     footer {
         left: 0;
         z-index: 20;
-        height: 140px;
+        height: 127px;
+        min-height: initial;
         padding: 5px;
+        display: block;
     }
-    .contactData>* {
-        padding: 2px 0;
+    .contactData {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .redirect {
+        flex-basis: 50%;
+    }
+    .helperTxt {
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        position: absolute;
+        display: initial;
+    }
+    .redirect:not(.mail) .helperTxt {
+        bottom: -15px;
+        left: 12px;
+    }
+    .redirect.mail .helperTxt {
+        bottom: -10px;
+        left: 15px;
+    }
+    .redirect:hover .helperTxt {
+        opacity: 1;
+    }
+    .fullTxt {
+        display: none;
+    }
+}
+
+
+/* ----------------------------------------- 
+--------------- TINY MOBILE ---------------- 
+----------------------------------------- */
+
+@media screen and (max-width: 290px) {
+    .wrapper.page {
+        height: initial;
+    }
+    .theme-panel,
+    .theme-panel.min36 {
+        flex: 100%;
+    }
+    footer {
+        width: 100vw;
+        height: auto;
+        display: block;
+        min-height: initial;
+        position: static;
     }
 }
