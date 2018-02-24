@@ -18,30 +18,34 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-a {
+a:not(.link) {
     text-decoration: none;
+}
+
+a {
     color: initial;
 }
 
 
 /*
-* MAIN PAGE LAYOUT
+* SPORT PAGE LAYOUT
 */
 
 .wrapper,
 nav,
 .wrapper.nav li,
 .theme-panel,
-.mobileMenuIcon {
+.mobileMenuIcon,
+footer {
     display: flex;
 }
 
 .wrapper.page {
     height: 100vh;
+    width: 100vw;
 }
 
 nav {
-    flex-wrap: wrap;
     height: 50px;
     position: relative;
 }
@@ -52,12 +56,16 @@ nav {
 }
 
 nav,
-.wrapper.panels {
+.wrapper.panels,
+footer {
     flex-wrap: wrap;
 }
 
 .theme-panel,
-.mobileMenuIcon {
+.mobileMenuIcon,
+.navPane-item,
+.navPane-item li,
+footer {
     justify-content: center;
     align-items: center;
 }
@@ -66,6 +74,10 @@ nav,
 /*
 * NAVIGATION
 */
+
+header {
+    z-index: 20;
+}
 
 .navLogo img {
     width: auto;
@@ -85,6 +97,7 @@ nav,
     text-align: center;
     margin: 5px;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .wrapper.nav {
@@ -149,6 +162,14 @@ nav,
     color: white;
 }
 
+.navPane-item li {
+    height: 40px;
+}
+
+.navPane-item li img {
+    margin-right: 20px;
+}
+
 .theme-panel h2,
 .mobileMenuIcon span {
     display: block;
@@ -158,6 +179,10 @@ nav,
 /*
 * THEME PANELS
 */
+
+main {
+    position: relative;
+}
 
 .wrapper.panels {
     height: calc(100vh - 50px);
@@ -207,6 +232,22 @@ footer {
 .theme-panel h2 {
     text-align: center;
     margin: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px 5px;
+}
+
+
+/*
+* TRENING PERSONALNY -> move to outer file
+*/
+
+.page.personalTraining {
+    display: none;
+    position: absolute;
+    left: 0;
+    z-index: -1;
 }
 
 
@@ -219,4 +260,103 @@ footer {
     bottom: 0;
     right: 0;
     width: 50vw;
+    background-color: white;
+    font-size: 0.8rem;
+}
+
+footer,
+a.link,
+.phone {
+    color: #929090;
+}
+
+footer>* {
+    display: block;
+    flex: 100%;
+}
+
+footer,
+.contactData {
+    text-align: center;
+}
+
+.contactData>* {
+    display: block;
+    padding: 5px;
+}
+
+.phone {
+    cursor: pointer;
+}
+
+.buildedBy {
+    color: lightgrey;
+    font-size: 0.7rem;
+}
+
+
+/* ----------------------------------------- 
+ -------------- DESKTOP SIZE --------------- 
+ ----------------------------------------- */
+
+@media screen and (min-width: 900px) {
+    /*
+    * SPORT PAGE LAYOUT
+    */
+    .wrapper.page {
+        flex-direction: row;
+    }
+    .wrapper.panels {
+        flex-wrap: nowrap;
+    }
+    /*
+    * NAVIGATION
+    */
+    nav {
+        height: 100vh;
+        display: block;
+    }
+    .navLogo img {
+        height: auto;
+    }
+    .mobileMenuIcon {
+        display: none;
+    }
+    .wrapper.nav {
+        display: flex;
+        position: initial;
+        /* viewport height minus footer and logo heights */
+        height: calc(100vh - 236px);
+    }
+    .navPane-item {
+        overflow: initial;
+        flex: 1;
+    }
+    .navPane-item li img {
+        margin-right: 0;
+    }
+    header,
+    .navLogo img,
+    .wrapper.nav,
+    footer {
+        width: 150px;
+    }
+    /*
+    * THEME PANELS
+    */
+    .theme-panel {
+        height: 100vh;
+    }
+    /*
+    * FOOTER
+    */
+    footer {
+        left: 0;
+        z-index: 20;
+        height: 140px;
+        padding: 5px;
+    }
+    .contactData>* {
+        padding: 2px 0;
+    }
 }
