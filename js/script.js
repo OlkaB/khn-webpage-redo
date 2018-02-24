@@ -55,7 +55,7 @@
                 footer.classList.remove('bottomPosition');
             }
         } else {
-            if (event.target.classList.contains('theme-panel')) {
+            if (event.target.classList.contains('theme-panel') || event.target.classList.contains('themePanelText')) {
                 togglePanles(true, event.target.classList[1]);
                 var subPageToShow = event.target.classList[1] === "personalTraining" ? "personalTraining" : "underConstruction";
                 toggleSubpages(true, subPageToShow);
