@@ -1,0 +1,88 @@
+/*
+*  HEADER
+*/
+
+header {
+    z-index: 20;
+}
+
+.logo img {
+    width: auto;
+    height: 50px;
+}
+
+.mobileMenuIconContainer {
+    flex: 1;
+    .mobileMenuIcon {
+        float: right;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        margin: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        & span {
+            display: block;
+        }
+    }
+}
+
+.wrapper.nav {
+    list-style-type: none;
+    @include position-absolute(top, 50px, left, 0);
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    & a {
+        display: block;
+    }
+    & .sport {
+        background-color: $color-nav-sport;
+    }
+    & .club {
+        background-color: $color-nav-club;
+    }
+    & .news {
+        background-color: $color-nav-news;
+    }
+    & .gallery {
+        background-color: $color-nav-gallery;
+    }
+    & .contact {
+        background-color: $color-nav-contact;
+    }
+    & .shop {
+        background-color: $color-nav-shop;
+    }
+    & .reform {
+        background-color: $color-nav-reform;
+    }
+    & span {
+        color: white;
+    }
+    &.open .navPane-item {
+        height: 40px;
+    }
+}
+
+.navPane-item {
+    list-style-type: none;
+    text-align: center;
+    overflow: hidden;
+    height: 0px;
+    /* animate menu collapse/expand */
+    transition: height 200ms ease-in;
+    filter: brightness(100%);
+    transition: filter 0.5s ease-in-out;
+    & li {
+        height: 40px;
+        & img {
+            margin-right: 20px;
+        }
+    }
+    &:hover {
+        filter: brightness(80%);
+    }
+}

@@ -1,0 +1,84 @@
+/*
+* FOOTER
+*/
+
+footer {
+    @include position-absolute(bottom, 0, right, 0);
+    width: 50vw;
+    font-size: $font-footer-size;
+    background-color: $color-footer-background;
+    display: flex;
+    flex-direction: column;
+    height: calc((100vh - 50px)/3);
+    min-height: 161px;
+}
+
+footer {
+    &,
+    .contactData {
+        flex-direction: column;
+        &,
+        .redirect {
+            color: $color-footer-text;
+            display: flex;
+        }
+    }
+    /* when subpage is opened on small screens position footer on bottom */
+    &.bottomPosition {
+        position: static;
+        width: 100vw;
+        height: auto;
+        display: block;
+        min-height: initial;
+        border-top: 1px solid lightgrey;
+    }
+}
+
+.contactData {
+    justify-content: space-around;
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    & span {
+        align-self: center;
+    }
+}
+
+.redirect {
+    text-align: center;
+    justify-content: center;
+    & .icon {
+        width: 25px;
+        height: 25px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    &.fb .icon {
+        background-image: url(../img/footer/facebook.png);
+        background-size: contain;
+    }
+    &.mobile .icon {
+        background-image: url(../img/footer/mobile_icon2.png);
+        background-size: contain;
+    }
+    &.mail .icon {
+        background-image: url(../img/footer/envelope_16.png);
+        background-size: auto;
+    }
+}
+
+.helperTxt {
+    font-size: 0.7rem;
+    display: none;
+}
+
+.buildedBy {
+    display: block;
+    height: 25px;
+    text-align: center;
+    color: lightgray;
+}

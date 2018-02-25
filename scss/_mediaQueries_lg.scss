@@ -1,0 +1,170 @@
+/*
+* MEDIA QUERIES LG
+*/
+
+@media screen and (min-width: 900px) {
+    .wrapper.page,
+    .theme-panel {
+        height: 100vh;
+        width: 100%
+    }
+    header,
+    .logo img,
+    .wrapper.nav,
+    footer {
+        width: 150px;
+    }
+    main {
+        margin-left: 150px;
+        min-height: 100vh;
+        display: flex;
+    }
+    /*
+* NAVIGATION 
+*/
+    header,
+    footer {
+        position: fixed;
+    }
+    header,
+    nav {
+        height: calc(100vh - 130px);
+    }
+    .logo img {
+        height: auto;
+    }
+    .mobileMenuIcon {
+        display: none;
+    }
+    .wrapper.nav {
+        flex: 1;
+        display: flex;
+        position: initial;
+        /* viewport height minus footer and logo heights */
+        height: calc(100vh - 130px - 73px);
+    }
+    .navPane-item {
+        overflow: initial;
+        flex: 1;
+        li {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            padding: 5px;
+            &>* {
+                display: block;
+                flex-shrink: 0;
+                font-size: 0.9rem;
+            }
+        }
+        img {
+            /* because of problems with gulp's imports transferred to css order */
+            margin-right: 0 !important;
+            margin-bottom: 10px;
+        }
+    }
+    /*
+* SPORT PAGE
+*/
+    .wrapper.panels {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+        flex-wrap: nowrap;
+    }
+    main.collapsed {
+        .wrapper.panels {
+            display: flex;
+            width: 140px;
+            position: fixed;
+            z-index: 40;
+        }
+        .theme-panel:not(.collapsed) {
+            flex-basis: 100%;
+        }
+    }
+    .theme-panel {
+        background-size: auto 100%;
+        flex-basis: 100%;
+        filter: grayscale(70%);
+        overflow: initial;
+        transition: flex 0.5s ease-in-out;
+        transition-property: flex, filter, background-size;
+        &.collapsed {
+            flex: 0;
+            overflow: hidden;
+        }
+        &:hover {
+            /* flex-basis: 120%;*/
+            background-size: auto 120%;
+            filter: grayscale(0%);
+        }
+    }
+    /*
+* PERSONAL TRAINING
+*/
+    .subpage.personalTraining {
+        padding: 10px 20px 70px 40px;
+        .textContent {
+            display: flex;
+            text-align: justify;
+            .col1 {
+                padding-right: 30px;
+            }
+            .col2 {
+                padding-left: 30px;
+            }
+        }
+        div[class^=col] {
+            flex: 1;
+        }
+    }
+    main.collapsed .subpage {
+        width: calc(100vw - 140px - 150px);
+        margin-left: 140px;
+        flex: 1;
+    }
+    .trainers .subText {
+        margin-bottom: 40px;
+    }
+    /*
+* FOOTER
+*/
+    footer {
+        left: 0;
+        z-index: 20;
+        height: 127px;
+        min-height: initial;
+        padding: 5px;
+        display: flex;
+    }
+    .contactData {
+        padding: 0 0 5px 0;
+        flex-wrap: wrap;
+        /* because of problems with gulp's imports transferred to css order */
+        flex-direction: row !important;
+    }
+    .redirect {
+        flex-basis: 50%;
+        position: relative;
+        &:not(.mail) .helperTxt {
+            bottom: -5px;
+            left: 12px;
+        }
+        &.mail .helperTxt {
+            bottom: -5px;
+            left: 15px;
+        }
+        &:hover .helperTxt {
+            opacity: 1;
+        }
+    }
+    .helperTxt {
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        position: absolute;
+        display: initial;
+    }
+    .fullTxt {
+        display: none;
+    }
+}

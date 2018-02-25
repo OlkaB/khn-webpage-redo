@@ -1,3 +1,18 @@
+/*
+*  GLOBAL SETTINGS
+*/
+
+
+/* fonts */
+
+$font-base: 'Roboto',
+sans-serif;
+$font-footer-size: 0.8rem;
+
+/* colors */
+
+$color-footer-text:#929090;
+$color-footer-background:white;
 $color-nav-sport: #ffa754;
 $color-nav-club: #e9532a;
 $color-nav-news: #49b5ac;
@@ -5,3 +20,38 @@ $color-nav-gallery: #3b9d89;
 $color-nav-contact: #714178;
 $color-nav-shop: #a7194b;
 $color-nav-reform: #000000;
+
+/* mixins */
+
+@mixin position-absolute($sideA, $sideAPosition, $sideB, $sideBPosition) {
+    position: absolute;
+    #{$sideA}: $sideAPosition;
+    #{$sideB}: $sideBPosition;
+}
+
+
+/* settings */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    font-family: $font-base;
+}
+
+a {
+    color: initial;
+    &:not(.link) {
+        text-decoration: none;
+    }
+}
+
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,70 @@
+/*
+* PERSONAL TRAINING
+*/
+
+.subpage.personalTraining {
+    padding: 20px 10px 90px;
+}
+
+.trainers p {
+    text-align: center;
+}
+
+
+/* flipping circle styling and effect */
+
+.flipCircleWrapper {
+    cursor: pointer;
+    height: 220px;
+    position: relative;
+    width: 220px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.circle {
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+    width: 100%;
+    &:hover {
+        transform: rotateY(180deg);
+    }
+    & .side,
+    & .overlay {
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+    }
+    .side {
+        background: url(../img/sport-fitness/instruktorzy1_1_img_normal.jpg) no-repeat 50% 50%;
+        background-size: cover;
+        position: absolute;
+        overflow: hidden;
+        backface-visibility: hidden;
+    }
+    .back {
+        line-height: 150px;
+        text-align: center;
+        transform: rotateY(180deg);
+        color: white;
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        p {
+            position: absolute;
+            top: 25px;
+            width: 100%;
+            font-size: 0.9rem;
+            &::before {
+                content: '';
+                border-top: 1px solid white;
+                width: 70%;
+                position: absolute;
+                top: 30px;
+                bottom: 0;
+            }
+        }
+    }
+}

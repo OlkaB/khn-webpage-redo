@@ -1,0 +1,47 @@
+/*
+*  PAGE LAYOUT
+*/
+
+.wrapper,
+nav,
+.wrapper.nav li,
+.theme-panel,
+.mobileMenuIcon,
+footer {
+    display: flex;
+}
+
+.theme-panel h2 {
+    display: block;
+}
+
+.wrapper.page {
+    width: 100vw;
+    position: relative;
+}
+
+nav {
+    height: 50px;
+    position: relative;
+    background-color: white;
+}
+
+.wrapper.page,
+.wrapper.nav {
+    flex-direction: column;
+}
+
+nav,
+.wrapper.panels,
+footer {
+    flex-wrap: wrap;
+}
+
+.theme-panel,
+.mobileMenuIcon,
+.navPane-item,
+.navPane-item li,
+footer {
+    justify-content: center;
+    align-items: center;
+}

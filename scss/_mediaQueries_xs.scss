@@ -1,0 +1,24 @@
+/*  
+* MEDIA QUERIES XS
+*/
+
+@media screen and (max-width: 290px) {
+    .wrapper.page {
+        height: initial;
+    }
+    .wrapper.panels {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        .theme-panel,
+        .theme-panel.min36 {
+            flex: 100%;
+        }
+    }
+    footer {
+        width: 100vw;
+        height: auto;
+        display: block;
+        min-height: initial;
+        position: static;
+    }
+}

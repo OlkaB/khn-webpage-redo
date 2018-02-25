@@ -1,0 +1,76 @@
+/*
+* SPORT PAGE
+*/
+
+main {
+    position: relative;
+}
+
+main.collapsed .wrapper.panels {
+    display: none;
+}
+
+.wrapper.panels {
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.theme-panel {
+    height: calc((100vh - 50px)/3);
+    min-height: 161px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    &:not(.min36) {
+        flex: 50%;
+    }
+    &.min36 {
+        flex-basis: 50%;
+    }
+    &.squash {
+        background-image: url(../img/panels/kolor_sqh_1_image_normal.jpg);
+    }
+    &.badminton {
+        background-image: url(../img/panels/kolor_bdm_1_image_normal.jpg);
+    }
+    &.personalTraining {
+        background-image: url(../img/panels/kolor_fit_1_image_normal.jpg);
+    }
+    &.pingPong {
+        background-image: url(../img/panels/kolor_ts_1_image_normal.jpg);
+    }
+    &.min36 {
+        background-image: url(../img/panels/36minut_POD_0045_1_image_normal.jpg);
+    }
+    h2 {
+        text-align: center;
+        margin: 0;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 100%;
+        padding: 10px 5px;
+    }
+}
+
+.subpage {
+    z-index: 0;
+    position: relative;
+    padding: 10px;
+    color: rgb(85, 85, 85);
+}
+
+.closeSubpage {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    border: 1px solid darkgrey;
+    color: darkgrey;
+    padding: 5px;
+    float: right;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    cursor: pointer;
+}
